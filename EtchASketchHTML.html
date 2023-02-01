@@ -3,7 +3,7 @@
     <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IT=edge" />
-     <meta name="viewport" content="width=device-width initial-scale-1.0" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <link rel="stylesheet" href="reset.css" />   
      <link rel="stylesheet" href="EtchASketchCSS.css" />   
      <script src="EtchASketchJS.js" defer> </script>
@@ -18,12 +18,14 @@
             <div class="content">
                 <div class="board"> </div>
                 <div class="buttons">
-                    <button>Black</button>
-                    <button>White</button>
-                    <button>Random</button>
-                    <button>Reset</button>
+                    <button onclick="changeColor('black')">Black</button>
+                    <button onclick="changeColor('white')">Erasor</button>
+                    <button onclick="changeColor('gray')">Gray</button>
+                    <button onclick="changeColor('random')">Random</button>
+                    <button onclick="resetBoard()">Reset</button>
                 </div>
-                <div type="text" placeholder="size of board" value="16">
+                <div>
+                <input type="text" placeholder="size of board" value="16" onchange="changeSize(this.value)">
                     <button> Set Size</button>
                 </div>
             </div>
