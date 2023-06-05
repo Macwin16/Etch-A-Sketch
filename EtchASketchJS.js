@@ -1,4 +1,5 @@
 let color ='black';
+let click = true;
 
 function populateBoard(size) {
     let board = document.querySelector(".board");
@@ -20,20 +21,24 @@ populateBoard(16);
 
 function changeSize(input){
     if(input >= 2 && input <= 100){
+        document.querySelector(".error").style.display = 'none';
         populateBoard(input);
     }
     else{
-    console.log("Error. Incompatible Input.")
+    document.querySelector(".error").style.display = 'flex';
     }
 
 }
 
 function colorSquare() {
-    if(color ==='random') {
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else{
-        this.style.backgroundColor = color;
-    }
+    if (click) {
+
+        if(color ==='random') {
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else{
+            this.style.backgroundColor = color;
+        }
+    }   
 }
 
 function changeColor(choice) {
@@ -45,3 +50,16 @@ function resetBoard() {
     let squares = board.querySelectorAll("div");
     squares.forEach((div) => div.style.backgroundColor = 'white');
 }
+
+document.querySelector('body').addEventListener("click", (event) =>{
+    if(event.target.tagName != 'BUTTON'){
+            click = !click;
+        if (click) {
+            document.querySelector('.mode').textContent = "mode: Coloring"
+        } else{
+            document.querySelector('.mode').textContent = "mode: not Coloring"
+        }
+    }
+} ) // event listener, if event is true, set to false. Boolean value has been assigned.
+    // if you click on a button,ex. Black Erasor Gray, the mode will not reset to coloring, 
+    //it will stay on not Coloring the way you had it
